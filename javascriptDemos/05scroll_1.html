@@ -1,0 +1,56 @@
+<!--
+学习
+    方法：
+        使用style属性制作菜单特效
+        使用className属性制作菜单特效
+        使用scrollTop制作随鼠标滚动的广告图片
+    效果：
+        制作鼠标移动特效
+        制作随鼠标滚动的广告图片
+    回顾：
+        使用外部样式表：
+            使用<link>标签链接到外部样式文件
+                <link reel="stylesheet" href="style.css" type="text/css">
+            使用@import方法导入外部样式表
+    事件：
+        onclick onmouseover onmouseout onmousedown
+-->
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta http-equiv="content-type" content="text/html" charset="UTF-8">
+    <title>多选框</title>
+    <style type="text/css">
+        li{
+            font-size: 12px;
+            color: #ffffff;
+            background-image: url("img/icon1.png");
+            background-repeat: no-repeat;
+            text-align: center;
+            width: 120px;
+            height: 50px;
+            line-height: 38px;
+            float: left;
+            list-style: none;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li>资讯动态</li>
+    <li>产品世界</li>
+    <li>市场营销</li>
+</ul>
+<script type="text/javascript">
+    var lis=document.getElementsByTagName("li");
+    for(var i=0; i<lis.length; i++){
+        lis[i].onmouseover=function(){
+            this.style.backgroundImage="url(img/icon2.png)"
+        }
+        lis[i].onmouseout=function(){
+            this.style.backgroundImage="url(img/icon1.png)"
+        }
+    }
+</script>
+</body>
+</html>

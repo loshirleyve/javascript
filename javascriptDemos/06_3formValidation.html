@@ -1,0 +1,89 @@
+<!--
+学习
+    提问：
+        为什么需要表单验证？
+        使用什么方法验证Email文本框中必须输入符号@和.？
+        使用什么事件可以实现文本输入提示特效？
+    任务：
+        验证休闲网登录页面数据输入的有效性
+        验证休闲网注册页面数据输入的有效性
+    实现：
+        使用表单事件和脚本函数实现表单验证
+        使用string对象和文本框控件常用属性和方法实现客户端验证
+    分析：
+        获得表单元素值
+        使用JavaScript的一些方法对数据进行判断
+        当表单提示时，触发onsubmit事件，对获取的数据进行验证
+    字符串对象的方法：
+        toLowerCase() toUpperCase() charAt(index)返回在指定位置的字符
+        indexOf(字符串，index)查找某个指定的字符串值在字符串中首次出现的位置
+        substring(index1,index2)返回位于指定索引index1和index2之间的字符串，
+        并且包括索引index1对应的字符，不包括索引index2对应的字符
+    文本框的方法和事件
+        事件：
+            onblur失去焦点，当光标离开某个文本框时触发
+            onfocus获得焦点，当光标进入某个文本框时触发
+            onkeypress某个键盘按键被按下并松开
+        方法：
+            blur()从文本域中移开焦点
+            focus()在文本域中设置焦点，即获得鼠标光标
+            select()选取文本域中的内容
+-->
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta http-equiv="content-type" content="text/html" charset="UTF-8">
+    <title>动态改变文本框效果</title>
+    <script type="text/javascript">
+        function check(){
+            var mail=document.getElementById("email").value;
+            if(mail==""){
+                alert("Email不能是空的！");
+                document.getElementById("email").focus();
+                return false;
+            }
+            if(mail.indexOf("@")==-1 || mail.indexOf(".")==-1){
+                alert("Email的格式不正确，得包含@号和.号");
+                document.getElementById("email").focus();
+                document.getElementById("email").select();
+                return false;
+            }
+            return true;
+        }
+        function clearText(){
+            var mail=document.getElementById("email");
+            if(mail.value=="请输入正确的电子邮箱"){
+                mail.value="";
+                mail.style.borderColor="#ff0000";
+            }
+        }
+    </script>
+</head>
+<body>
+<div id="header" class="main">
+    <div id="headerLeft"><img src="img/0.jpg"></div>
+    <div id="headerRight">注册 | 登录 | 帮助</div>
+</div>
+<div class="main">
+    <table id="center" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+            <td><img src="img/1.jpg"></td>
+        </tr>
+        <tr>
+            <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td>登录休闲网</td>
+                </tr>
+                <form action="#" method="post" name="myForm" onsubmit="return check()"><tr>
+                    <td>Email:<input id="email" type="text" value="请输入正确的电子邮箱" onfocus="clearText()"></td>
+                </tr>
+                <tr>
+                    <td>&nbsp;密码：<input id="pwd" type="password"></td>
+                </tr>
+                <tr></tr></form>
+            </table> </td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!--
+学习
+    方法：
+        使用style属性制作菜单特效
+        使用className属性制作菜单特效
+        使用scrollTop制作随鼠标滚动的广告图片
+    效果：
+        制作鼠标移动特效
+        制作随鼠标滚动的广告图片
+    回顾：
+        使用外部样式表：
+            使用<link>标签链接到外部样式文件
+                <link reel="stylesheet" href="style.css" type="text/css">
+            使用@import方法导入外部样式表
+    事件：
+        onclick onmouseover onmouseout onmousedown
+-->
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta http-equiv="content-type" content="text/html" charset="UTF-8">
+    <title>随鼠标滚动的广告图片</title>
+    <style type="text/css">
+        #main {text-align: center;}
+        #adver {
+            position: absolute;
+            left: 50px;
+            top:30px;
+            z-index: 2;
+        }
+    </style>
+    <script type="text/javascript">
+        var adverTop;//层距页面顶端距离
+        var adverLeft;
+        var adverObject;//层对象
+        function inix(){
+            adverObject=document.getElementById("adver");//获得层对象
+            if(adverObject.currentStyle){
+                adverTop=parseInt(adverObject.currentStyle.top);
+                adverLeft=parseInt(adverObject.currentStyle.left);
+            }else{
+                adverTop=parseInt(document.defaultView.getComputedStyle(adverObject,null).top);
+                adverLeft=parseInt(document.defaultView.getComputedStyle(adverObject,null).left);
+            }
+        }
+        function move(){
+            adverObject.style.top=adverTop+parseInt(document.documentElement.scrollTop)+"px";
+            adverObject.style.left=adverLeft+parseInt(document.documentElement.scrollLeft)+"px";
+        }
+        window.onload=inix;
+        window.onscroll=move;
+    </script>
+</head>
+<body>
+<div id="adver"><img src="img/1.jpg"></div>
+<div id="main"><img src="img/0.jpg"><img src="img/2.jpg"><img src="img/3.jpg">
+<br>
+<p>111111111</p>
+<p>111111111</p>
+<p>111111111</p>
+<p>111111111</p>
+<p>111111111</p>
+<p>111111111</p>
+<p>111111111</p>
+<p>111111111</p>
+<p>111111111</p>
+<p>111111111</p>
+<p>111111111</p>
+<p>111111111</p>
+<p>111111111</p>
+<p>111111111</p>
+<p>111111111</p>
+<p>111111111</p>
+<p>111111111</p>
+<p>111111111</p>
+<p>111111111</p>
+<p>111111111</p>
+<p>111111111</p>
+<p>111111111</p>
+<p>111111111</p>
+<p>111111111</p>
+<p>111111111</p>
+</div>
+</body>
+</html>

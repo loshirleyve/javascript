@@ -1,0 +1,69 @@
+<!--
+学习
+    提问：
+        为什么需要表单验证？
+        使用什么方法验证Email文本框中必须输入符号@和.？
+        使用什么事件可以实现文本输入提示特效？
+    任务：
+        验证休闲网登录页面数据输入的有效性
+        验证休闲网注册页面数据输入的有效性
+    实现：
+        使用表单事件和脚本函数实现表单验证
+        使用string对象和文本框控件常用属性和方法实现客户端验证
+    分析：
+        获得表单元素值
+        使用JavaScript的一些方法对数据进行判断
+        当表单提示时，触发onsubmit事件，对获取的数据进行验证
+    字符串对象的方法：
+        toLowerCase() toUpperCase() charAt(index)返回在指定位置的字符
+        indexOf(字符串，index)查找某个指定的字符串值在字符串中首次出现的位置
+        substring(index1,index2)返回位于指定索引index1和index2之间的字符串，
+        并且包括索引index1对应的字符，不包括索引index2对应的字符
+-->
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta http-equiv="content-type" content="text/html" charset="UTF-8">
+    <title>验证两次密码输入</title>
+    <script type="text/javascript">
+        function check(){
+            var username=document.getElementById("username").value;
+            var pwd=document.getElementById("pwd").value;
+            var repwd=document.getElementById("repwd").value;
+            if(username==""){
+                alert("用户名不能是空的！");
+                return false;
+            }
+            if(username.indexOf("@")==-1){
+                alert("用户名的格式不正确，得包含@号");
+                return false;
+            }
+            if(username.indexOf(".")==-1){
+                alert("用户名的格式不正确，得包含.号");
+                return false;
+            }
+            if(pwd==""){
+                alert("密码不能为空！");
+                return false;
+            }
+            if(pwd.length<5){
+                alert("密码必须大于5位！")
+                return false;
+            }
+            if(pwd!=repwd){
+                alert("两次密码输入不一致！")
+                return false;
+            }
+            return true;
+        }
+    </script>
+</head>
+<body>
+<form action="allSelect.html" method="post" name="ss" onsubmit="check()">
+    用户名：<input type="text" id="username"><br>
+    密码：<input type="password" id="pwd"><br>
+    再次输入密码：<input type="password" id="repwd"><br>
+    <input type="submit" value="登录">
+</form>
+</body>
+</html>

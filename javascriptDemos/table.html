@@ -1,0 +1,49 @@
+<!--
+学习
+    表格属性：rows[]
+    表格方法：insertRow();
+             deleteRow();
+    代码片段：
+             tableObject.rows[]
+             tableObject.insertRow(indes)
+             deleteRow(index)
+    实现：表格增加一行
+         表格删除一行
+-->
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta http-equiv="content-type" content="text/html" charset="UTF-8">
+    <title>多选框</title>
+    <script type="text/javascript">
+        function addRow(){
+            var newRow=document.getElementById("myTable").insertRow(3);
+            var coll=newRow.insertCell(0);
+            coll.innerHTML="王五";
+            var cole=newRow.insertCell(1);
+            cole.innerHTML="5";
+        }
+        function delRow(){
+            var deleRow=document.getElementById("myTable").deleteRow(3);
+        }
+    </script>
+</head>
+<body>
+<table border="1" cellpadding="0" cellspacing="0" id="myTable" width="330">
+    <tr>
+        <td>姓名</td>
+        <td>年龄</td>
+    </tr>
+    <tr>
+        <td>张三</td>
+        <td>15</td>
+    </tr>
+    <tr>
+        <td>李四</td>
+        <td>10</td>
+    </tr>
+</table>
+<input name="b1" type="button" value="增加一行" onclick="addRow()">
+<input name="b2" type="button" value="删除第三行" onclick="delRow()">
+</body>
+</html>
